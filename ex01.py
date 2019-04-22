@@ -1,0 +1,5 @@
+print("Hello world!")
+print("Hello again")
+print("This is fun")
+print("Extra line added")
+#print("This is a commented line. The # character comments out a line")
