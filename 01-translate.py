@@ -5,9 +5,32 @@ from google.cloud import translate
 
 translate_client = translate.Client()
 
-text_to_translate = "Good morning"
+text_to_translate = input(f"Enter phrase in English: ")
 langcode_from = "en"
-langcode_to = "ms" #Malay
-translated_text = translate_client.translate(text_to_translate,target_language=langcode_to)
+print("""Please select language to translate to:
+1. Malay
+2. Italian
+3. Russian
+""")
+selection = input("Enter selection: ")
 
-print(f"{text_to_translate} in English is {translated_text['translatedText']} in Malay")
+if selection.isdigit():
+    if selection == "1":
+        langcode_to = "ms" #Malay
+        language_name = "Malay"
+    elif selection == "2":
+        langcode_to = "it"
+        language_name = "Italian"
+    elif selection == "3":
+        langcode_to = "ru"
+        language_name = "Russian"
+    else:
+        print("Why can't you just follow the instructions???")
+        exit()
+
+    translated_text = translate_client.translate(text_to_translate,target_language=langcode_to)
+
+    print(f"'{text_to_translate}' in English is '{translated_text['translatedText']}' in {language_name}")
+
+else:
+    print("Why can't you just follow the instructions???")
